@@ -1,5 +1,5 @@
 # NDEx Common Network Schema Specification
-This is the draft release of NDEx Common. In use for new NDEx-managed network content. In many cases, elements in this draft are treated specially by the NDEx web user interface at www.ndexbio.org.
+This is the draft release of NDEx Common. In use for new NDEx-managed network content. In many cases, elements in this draft are treated specially by the NDEx web user interface at www.ndexbio.org. For example, attributes marked as "indexed" are indexed for search by the NDEx server.
 # 1 Attribute Values
 ## 1.1 Attribute Value Data Types:
 * string (default)
@@ -29,7 +29,6 @@ Example:
 ```
 
 # 2 Network Attributes
-Note that "indexed" attributes are indexed for search by the NDEx server.
 ## 2.1 name
 * name of the network. Less than 150 chars.
 * required
