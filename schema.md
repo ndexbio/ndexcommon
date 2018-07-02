@@ -32,10 +32,10 @@ NC controlled vocabulary attributes are designed to be independent of each other
 Example:
 '''
 "@context": [
-{	
-"cas": "http://identifiers.org/cas/",
-"hprd: "http://identifiers.org/hprd/"
-}
+  {	
+    "cas": "http://identifiers.org/cas/",
+    "hprd: "http://identifiers.org/hprd/"
+  }
 ]
 '''
 
@@ -74,296 +74,152 @@ Note that "indexed" attributes are indexed for search by the NDEx server.
 * indexed
 * keywords describing the network.
 * data type:list_of_string
-3 Node Attributes
-3.1 name
+# 3 Node Attributes
+## 3.1 name
 * Each node requires either a name attribute, a represents (ID) attribute, or both.
 * name is a label for humans to read.
 * A recommended practice is to use a standard vocabulary for name values.
-** Such as gene symbols, e.g. RBL2.
+  * Such as gene symbols, e.g. RBL2.
 * data type:string
 * name is special in CX: it is encoded in the “n” attribute of a CX node aspect element, not via a nodeAttribute aspect element.
 
-3.2 represents
+## 3.2 represents
 * Each node requires either a name attribute, a represents (ID) attribute, or both.
 * represents specifies the primary identifier for entity represented by the node
 * If a namespace for the identifier exists,
-** the namespace must be defined in the @context aspect
-** the represents value must use the prefix associated with the namespace 
-*** e.g. 'ncbigene:5934'
+  * the namespace must be defined in the @context aspect
+  * the represents value must use the prefix associated with the namespace 
+    * e.g. 'ncbigene:5934'
 * data type:string
 * represents is special in CX: it is encoded as the “r” attribute of a CX node aspect element, not via a nodeAttribute aspect element.
-3.3 alias
+## 3.3 alias
 * optional
 * a list of identifiers that reference the same entity as the value of represents
-* non-standard identifiers are allowed, such as 'p53' for 'hgnc:TP53"
+* non-standard identifiers are allowed, such as 'p53' for 'hgnc_symbol:TP53"
 * If a namespace for the identifier exists,
-** the namespace must be defined in the @context aspect
-** the represents value must use the prefix associated with the namespace 
-*** e.g. 'ncbigene:5934'
+  * the namespace must be defined in the @context aspect
+  * the represents value must use the prefix associated with the namespace 
+    * e.g. 'ncbigene:5934'
 * the interpretation of "same entity" is subject to interpretation. In some cases, the equivalence may be approximate, such as mapping between disease ontologies. And a special case is the identifiers used to describe genes and gene products. Frequently gene identifiers are, for the purposes of a given network or dataset, treated as equivalent to protein identifiers. This is such a common practice that NC does not deprecate this use of the aliases attribute.
 * data type:string
-3.4 type
+## 3.4 type
 * recommended
 * The type of entity represented by the node 
 * e.g. "protein", "biological_process". 
 * data type: string
 * types:
-** gene or gene product
-** gene product
-** protein
-** gene
-** mrna
-** rna
-** phenotype
-** disease
-** chemical
-** drug
-** biological process
-** cellular component
-
+  * gene or gene product
+  * gene product
+  * protein
+  * gene
+  * mrna
+  * rna
+  * phenotype
+  * disease
+  * chemical
+  * drug
+  * biological process
+  * cellular component
 
 Each term in the node type vocabulary corresponds to one or more terms in standardized vocabularies. If a network requires node types outside this vocabulary, the best practice is to adopt additional term names from standardized vocabularies and document their corresponding namespace identifiers in the network description, e.g. "non-protein coding RNA" is corresponds to 'SIO:000790'. (A human-readable definition is sufficient for most use cases and no computable structure has been defined as of this writing.)
 
-NC2
-BioLink
-BioLink Mappings
-NCIT
-Namespaces
-gene or gene product
-gene or gene product
+## 3.5 link
+* A list of links associated with the node. 
+* formats:
+  * URL
+  * Markdown link
+  * HTML link
+* data type: list_of_string
 
-
-
-
-ncbigene
-gene product
-gene product
-
-
-Gene Product
-ncbigene
-protein
-protein
-SO:0000704
-SIO:010035
-WD:Q7187"
-
-
-Protein
-uniprot
-PR
-ENSEMBL
-gene
-gene
-SO:0000704
-SIO:010035
-WD:Q7187
-
-
-Gene
-ncbigene
-ENSEMBL
-HGNC
-MGI
-ZFIN
-RGD
-FLYBASE
-SGD
-mrna
-
-
-
-
-Messenger RNA
-
-
-rna
-transcript
-SO:0000673
-SIO:010450
-
-
-
-
-phenotype
-phenotypic feature
-UPHENO:0000001
-SIO:010056
-
-
-
-
-HPO
-SIDER
-MEDDRA
-disease
-disease
-MONDO:0000001
-WD:Q12136
-SIO:010299
-Disease or Disorder
-disease ontology
-chemical
-chemical substance
-SIO:010004
-UMLSSG:CHEM
-WD:Q11173
-
-
-pubchem.compound
-chebi
-cas
-drug
-drug
-WD:Q12140
-
-
-drugbank
-biological process
-biological process
-GO:0008150
-SIO:000006
-
-
-Biological Process
-MeSH
-GO
-cellular component
-cellular component
-GO:0005575
-SIO:001400
-
-
-
-
-GO
-network
-
-
-
-
-
-
-
-
-term
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3.5 link
-A list of links associated with the node. 
-formats:
-URL
-Markdown link
-HTML link
-data type: list_of_string
-
-An important use is to reference an NDEx network, such as with hierarchical model network in which nodes that represent terms link to defining interaction networks.
-4 Edge Attributes
+# 4 Edge Attributes
 The semantics of edges are expressed by the interaction and a mechanism attribute. The edge interaction types are very simple, very general. Edge attributes such as "mechanism" provide nuance in the expression of edge semantics. 
-4.1 interaction
+## 4.1 interaction
 optional
 The type of the edge, its primary meaning.
 types:
-type-of
-part-of
-correlates-with
-associates-with
-interacts-with
-regulates
+  * type-of
+  * part-of
+  * correlates-with
+  * associates-with
+  * interacts-with
+  * regulates
 data type: list_of_string
 interaction is special in CX: it is encoded in the "i" attribute of a CX edge aspect element, not via a CX edgeAttribute aspect element.
-4.2 citation
+## 4.2 citation
 optional
 a list of references to sources providing evidence supporting the edge. 
 references that are identifiers in standard namespaces such as PubMed must have a namespace prefix and the namespace must be defined in @context.  
 i.e. pubmed:123456
 references can be:
-ids in standard namespaces
-URLs
-URIs
-DOIs
-text in standard citation format
-arbitrary strings
+  * ids in standard namespaces
+  * URLs
+  * URIs
+  * DOIs
+  * text in standard citation format
+  * arbitrary strings
 data type: list_of_string
-4.3 mechanism
+## 4.3 mechanism
 optional 
 The mechanism(s) by which the interaction is mediated
 data type: list_of_string
-Mechanisms:
-chemical reaction
-small molecule catalysis reaction
-relocalization
-binding
-cleavage
-stabilization
-destabilization
-increase/decrease susceptibility
-transcriptional regulation
-post transcriptional regulation
-translation regulation 
-gene methylation
-gene acetylation
-gtpase-activating protein reaction
-guanine nucleotide exchange factor reaction
-post translational modification
-palmitoylation
-neddylation
-phosphorylation
-trimethylation
-ubiquitination
-methylation
-desumoylation
-acetylation
-deacetylation
-dephosphorylation
-deubiquitination
-glycosylation
-hydroxylation
-sumoylation
-demethylation
-farnesylation
-s-nitrosylation
-tyrosination
-4.4 polarity
-optional 
-polarity specifies whether the interaction is a positive or negative relationship, e.g. "upregulates" vs. "downregulates". 
-If not set, or set to 0, then the relationship has undefined sign, e.g. simply "regulates" 
-data type: integer
-values: 1| -1 | 0
-4.5 evidence
-recommended
-evidence describes specific evidence supporting the edge, in contrast to the citation aspect which indicates the sources of evidence. The value is a list of strings where each element is either text or a string representation of a JSON object describing the evidence with the following fields:
-source
-same format as the values for the citation attribute
-type
-the type of the source of the evidence
-journal
-book
-text
-text from the source that specifically supports the edge.
-data type: list_of_strings
-4.6 contact
-The interaction is mediated by direct physical contact. 
-Phosphorylation of a substrate by a kinase implies contact = true.
-data type: boolean
-default: false
+mechanisms:
+  * chemical reaction
+  * small molecule catalysis reaction
+  * relocalization
+  * binding
+  * cleavage
+  * stabilization
+  * destabilization
+  * increase/decrease susceptibility
+  * transcriptional regulation
+  * post transcriptional regulation
+  * translation regulation 
+  * gene methylation
+  * gene acetylation
+  * gtpase-activating protein reaction
+  * guanine nucleotide exchange factor reaction
+  * post translational modification
+  * palmitoylation
+  * neddylation
+  * phosphorylation
+  * trimethylation
+  * ubiquitination
+  * methylation
+  * desumoylation
+  * acetylation
+  * deacetylation
+  * dephosphorylation
+  * deubiquitination
+  * glycosylation
+  * hydroxylation
+  * sumoylation
+  * demethylation
+  * farnesylation
+  * s-nitrosylation
+  * tyrosination
+## 4.4 polarity
+* optional 
+* polarity specifies whether the interaction is a positive or negative relationship, e.g. "upregulates" vs. "downregulates". 
+* If not set, or set to 0, then the relationship has undefined sign, e.g. simply "regulates" 
+* data type: integer
+* values: 1| -1 | 0
+## 4.5 evidence
+* recommended
+* evidence describes specific evidence supporting the edge, in contrast to the citation aspect which indicates the sources of evidence. The value is a list of strings where each element is either text or a string representation of a JSON object describing the evidence with the following fields:
+  * source
+    * same format as the values for the citation attribute
+  * type
+    * the type of the source of the evidence
+      * journal
+      * book
+  * text
+    * text from the source that specifically supports the edge.
+* data type: list_of_strings
+## 4.6 contact
+* The interaction is mediated by direct physical contact. 
+  * Phosphorylation of a substrate by a kinase implies contact = true.
+* data type: boolean
+* default: false
 
 
 
