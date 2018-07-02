@@ -1,4 +1,5 @@
 # NDEx Common Network Schema Specification
+This is the draft release of NDEx Common. In use for new NDEx-managed network content. In many cases, elements in this draft are treated specially by the NDEx web user interface at www.ndexbio.org.
 # 1 Attribute Values
 ## 1.1 Attribute Value Data Types:
 * string (default)
