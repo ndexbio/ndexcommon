@@ -27,17 +27,19 @@ NC controlled vocabulary attributes are designed to be independent of each other
 * list_of_string
 
 ## 1.2 @context (CX Aspect)
-@context is a CX aspect that specifies the namespaces and prefixes for identifiers used in the network. It corresponds to the JSON LD @context. (http://www.w3.org/TR/json-ld/#the-context) Use of the @context aspect enables applications to interpret prefixed identifiers in attribute values. Where appropriate, namespaces defined in identifiers.org are recommended. The structure of @context below is also described in the CX specification.
+@context is a CX aspect that specifies the namespaces and prefixes for identifiers used in the network. It corresponds to the JSON LD @context. (http://www.w3.org/TR/json-ld/#the-context) 
+
+Use of the @context aspect enables applications to interpret prefixed identifiers in attribute values. Where appropriate, namespaces defined in identifiers.org are recommended. The structure of @context below is also described in the CX specification.
 
 Example:
-'''
+```
 "@context": [
   {	
     "cas": "http://identifiers.org/cas/",
     "hprd: "http://identifiers.org/hprd/"
   }
 ]
-'''
+```
 
 # 2 Network Attributes
 Note that "indexed" attributes are indexed for search by the NDEx server.
@@ -69,11 +71,12 @@ Note that "indexed" attributes are indexed for search by the NDEx server.
 * person or organization owning or managing rights over the resource.
 * same as dc:rightsHolder
 * data type:string
-2.7 labels
+## 2.7 labels
 * optional
 * indexed
 * keywords describing the network.
 * data type:list_of_string
+
 # 3 Node Attributes
 ## 3.1 name
 * Each node requires either a name attribute, a represents (ID) attribute, or both.
@@ -82,7 +85,6 @@ Note that "indexed" attributes are indexed for search by the NDEx server.
   * Such as gene symbols, e.g. RBL2.
 * data type:string
 * name is special in CX: it is encoded in the “n” attribute of a CX node aspect element, not via a nodeAttribute aspect element.
-
 ## 3.2 represents
 * Each node requires either a name attribute, a represents (ID) attribute, or both.
 * represents specifies the primary identifier for entity represented by the node
@@ -122,7 +124,6 @@ Note that "indexed" attributes are indexed for search by the NDEx server.
   * cellular component
 
 Each term in the node type vocabulary corresponds to one or more terms in standardized vocabularies. If a network requires node types outside this vocabulary, the best practice is to adopt additional term names from standardized vocabularies and document their corresponding namespace identifiers in the network description, e.g. "non-protein coding RNA" is corresponds to 'SIO:000790'. (A human-readable definition is sufficient for most use cases and no computable structure has been defined as of this writing.)
-
 ## 3.5 link
 * A list of links associated with the node. 
 * formats:
@@ -134,35 +135,35 @@ Each term in the node type vocabulary corresponds to one or more terms in standa
 # 4 Edge Attributes
 The semantics of edges are expressed by the interaction and a mechanism attribute. The edge interaction types are very simple, very general. Edge attributes such as "mechanism" provide nuance in the expression of edge semantics. 
 ## 4.1 interaction
-optional
-The type of the edge, its primary meaning.
-types:
+* optional
+* The type of the edge, its primary meaning.
+* types:
   * type-of
   * part-of
   * correlates-with
   * associates-with
   * interacts-with
   * regulates
-data type: list_of_string
-interaction is special in CX: it is encoded in the "i" attribute of a CX edge aspect element, not via a CX edgeAttribute aspect element.
+* data type: list_of_string
+* interaction is special in CX: it is encoded in the "i" attribute of a CX edge aspect element, not via a CX edgeAttribute aspect element.
 ## 4.2 citation
-optional
-a list of references to sources providing evidence supporting the edge. 
-references that are identifiers in standard namespaces such as PubMed must have a namespace prefix and the namespace must be defined in @context.  
-i.e. pubmed:123456
-references can be:
+* optional
+* a list of references to sources providing evidence supporting the edge. 
+* references that are identifiers in standard namespaces such as PubMed must have a namespace prefix and the namespace must be defined in @context.  
+  * i.e. pubmed:123456
+* references can be:
   * ids in standard namespaces
   * URLs
   * URIs
   * DOIs
   * text in standard citation format
   * arbitrary strings
-data type: list_of_string
+* data type: list_of_string
 ## 4.3 mechanism
-optional 
-The mechanism(s) by which the interaction is mediated
-data type: list_of_string
-mechanisms:
+* optional 
+* The mechanism(s) by which the interaction is mediated
+* data type: list_of_string
+* mechanisms:
   * chemical reaction
   * small molecule catalysis reaction
   * relocalization
@@ -205,7 +206,8 @@ mechanisms:
 * values: 1| -1 | 0
 ## 4.5 evidence
 * recommended
-* evidence describes specific evidence supporting the edge, in contrast to the citation aspect which indicates the sources of evidence. The value is a list of strings where each element is either text or a string representation of a JSON object describing the evidence with the following fields:
+* evidence describes specific evidence supporting the edge, in contrast to the citation aspect which indicates the sources of evidence.
+* The value is a list of strings where each element is either text or a string representation of a JSON object describing the evidence with the following fields:
   * source
     * same format as the values for the citation attribute
   * type
