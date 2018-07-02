@@ -16,5 +16,6 @@ NC controlled vocabulary attributes are designed to be independent of each other
 # Specification
 ## (NC 0.1 - DRAFT - July 2018)[https://github.com/ndexbio/ndexcommon/schema.md]
 The draft release of NDEx Common. In use for new NDEx-managed network content.
+In many cases, elements in this draft are treated specially by the NDEx web user interface at www.ndexbio.org.
 ## (NC Schema Development)[https://github.com/ndexbio/ndexcommon/blob/master/schema-dev]
 NDEx Common attributes in testing or experimental use. Feedback welcome.
