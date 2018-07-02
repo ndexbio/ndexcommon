@@ -122,7 +122,6 @@ Note that "indexed" attributes are indexed for search by the NDEx server.
   * drug
   * biological process
   * cellular component
-
 Each term in the node type vocabulary corresponds to one or more terms in standardized vocabularies. If a network requires node types outside this vocabulary, the best practice is to adopt additional term names from standardized vocabularies and document their corresponding namespace identifiers in the network description, e.g. "non-protein coding RNA" is corresponds to 'SIO:000790'. (A human-readable definition is sufficient for most use cases and no computable structure has been defined as of this writing.)
 ## 3.5 link
 * A list of links associated with the node. 
@@ -165,36 +164,26 @@ The semantics of edges are expressed by the interaction and a mechanism attribut
 * data type: list_of_string
 * mechanisms:
   * chemical reaction
-  * small molecule catalysis reaction
+  * small molecule catalysis
   * relocalization
   * binding
   * cleavage
   * stabilization
-  * destabilization
-  * increase/decrease susceptibility
   * transcriptional regulation
-  * post transcriptional regulation
-  * translation regulation 
   * gene methylation
   * gene acetylation
-  * gtpase-activating protein reaction
-  * guanine nucleotide exchange factor reaction
-  * post translational modification
+  * GAP reaction
+  * GEF reaction
   * palmitoylation
   * neddylation
   * phosphorylation
   * trimethylation
   * ubiquitination
   * methylation
-  * desumoylation
   * acetylation
-  * deacetylation
-  * dephosphorylation
-  * deubiquitination
   * glycosylation
   * hydroxylation
   * sumoylation
-  * demethylation
   * farnesylation
   * s-nitrosylation
   * tyrosination
