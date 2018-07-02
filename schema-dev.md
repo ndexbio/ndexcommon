@@ -18,6 +18,7 @@
   * drug
   * biological process
   * cellular component
+  
 Each term in the node type vocabulary corresponds to one or more terms in standardized vocabularies. If a network requires node types outside this vocabulary, the best practice is to adopt additional term names from standardized vocabularies and document their corresponding namespace identifiers in the network description, e.g. "non-protein coding RNA" is corresponds to 'SIO:000790'. (A human-readable definition is sufficient for most use cases and no computable structure has been defined as of this writing.)
 ## 3.5 link
 * A list of links associated with the node. 
